@@ -49,11 +49,6 @@ time.sleep(0.2)
 class Bot():
     def __init__(self):
         self.table_coords = bbox
-        self.region = {'top': self.table_coords[0], 
-                       'left': self.table_coords[1], 
-                       'width': self.table_coords[2] - self.table_coords[0], 
-                       'height': self.table_coords[3] - self.table_coords[1]}
-        print('region :', self.region)
 
     def get_table(self):
         return ImageGrab.grab(self.table_coords)
@@ -61,4 +56,3 @@ class Bot():
 
 botte = Bot()
 img = botte.get_table()
-img.save('image.png')
