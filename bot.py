@@ -1,9 +1,6 @@
 import tkinter as tk
 from PIL import ImageGrab, ImageTk
-import mss 
-import mss.tools
 import time
-
 
 class GUI(tk.Tk):
     def __init__(self):
@@ -31,7 +28,7 @@ class GUI(tk.Tk):
     def on_button_press(self, event):
         self.start_x = event.x
         self.start_y = event.y
-        self.rect = self.canvas.create_rectangle(self.x, self.y, 1, 1, outline='white')
+        self.rect = self.canvas.create_rectangle(self.x, self.y, 1, 1, outline='red')
 
     def on_move_press(self, event):
         curX, curY = (event.x, event.y)
@@ -59,9 +56,9 @@ class Bot():
         print('region :', self.region)
 
     def get_table(self):
-        with mss.mss() as sct:
-                return sct.grab(self.region)
+        return ImageGrab.grab(self.table_coords)
 
 
 botte = Bot()
 img = botte.get_table()
+img.save('image.png')
